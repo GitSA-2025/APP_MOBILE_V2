@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "APP_MOBILE_V2",
-    "slug": "APP_MOBILE_V2",
+    "name": "SA-Sistema-de-Controle-de-Acesso",
+    "slug": "SA-Sistema-de-Controle-de-Acesso",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,6 +24,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
