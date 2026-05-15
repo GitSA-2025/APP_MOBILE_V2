@@ -10,7 +10,7 @@ import {
   Platform,
   Image
 } from "react-native";
-import styles from "./styles";
+import styles from "../../Styles/stylesLogin";
 import AnimatedInput from "../../components/AnimatedInput"; // Input customizado com animação
 import { useState } from "react";
 import { useRoute, useNavigation } from "@react-navigation/native"; // Para pegar params e navegação

@@ -11,7 +11,7 @@ import {
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import AnimatedInput from "../../components/AnimatedInput";
-import styles from "./styles";
+import styles from "../../Styles/stylesLogin";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 

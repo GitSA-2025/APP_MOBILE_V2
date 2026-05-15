@@ -11,7 +11,7 @@ import {
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import AnimatedInput from "../../components/AnimatedInput";
-import styles from "./styles";
+import styles from "../../Styles/stylesLogin";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -26,6 +26,10 @@ export default function Login() {
         // Navega para a tela de cadastro
         navigation.navigate('Register');
     }
+
+  const handleHome = () => {
+    navigation.navigate('Home');
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -66,7 +70,7 @@ export default function Login() {
               <Text style={styles.textLink}>Esqueci a senha</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btnAvancar}>
+            <TouchableOpacity style={styles.btnAvancar} onPress={handleHome}>
               <Text style={styles.textBtn}>Avançar</Text>
             </TouchableOpacity>
 

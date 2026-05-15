@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   btnAvancar: {
     backgroundColor: "#8E2927",
-    borderRadius: 16,
+    borderRadius: 10,
     paddingVertical: 12,
     width: "100%",
     alignItems: "center",
