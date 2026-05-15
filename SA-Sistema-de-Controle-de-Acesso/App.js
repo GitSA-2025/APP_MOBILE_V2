@@ -10,6 +10,8 @@ import { useEffect } from 'react';
 
 //importação das telas
 import Login from './src/screens/Login';
+import Register from './src/screens/Register';
+import TwoFA from './src/screens/TwoFA';
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -41,6 +43,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false}}/>
+        <Stack.Screen name="Register" component={Register} options={{ headerShown: false}}/>
+        <Stack.Screen name="TwoFA" component={TwoFA} options={{ headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

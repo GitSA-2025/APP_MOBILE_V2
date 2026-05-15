@@ -15,17 +15,23 @@ import styles from "./styles";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Login() {
-
+export default function Register() {
   const navigation = useNavigation();
 
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [confSenha, setConfSenha] = useState("");
+
+  const handleLogin = () => {
+    // Navega para a tela de login
+    navigation.navigate("Login");
+  };
 
   const handleRegister = () => {
-        // Navega para a tela de cadastro
-        navigation.navigate('Register');
-    }
+    // Navega para a tela de 2 fatores
+    navigation.navigate("TwoFA");
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -41,12 +47,18 @@ export default function Login() {
               style={styles.logo}
             />
 
-            <Text style={styles.h1}>Olá, seja bem vindo(a) novamente!</Text>
+            <Text style={styles.h1}>Olá, seja bem vindo(a) novo usuário!</Text>
             <Text style={styles.h4}>
-              Conecte-se à sua conta para continuar e utilizar as
+              Crie a sua nova conta no SA para continuar e utlizar as
               funcionalidades do APP!
             </Text>
             <View style={{ width: "100%", marginTop: 12 }}>
+              <AnimatedInput
+                label="Nome"
+                iconName="account"
+                value={nome}
+                onChangeText={setNome}
+              />
               <AnimatedInput
                 label="Email"
                 iconName="email"
@@ -61,17 +73,21 @@ export default function Login() {
                 onChangeText={setSenha}
                 secureTextEntry
               />
+              <AnimatedInput
+                label="Confirme a Senha"
+                iconName="lock"
+                value={confSenha}
+                onChangeText={setConfSenha}
+                secureTextEntry
+              />
             </View>
-            <TouchableOpacity style={{ alignSelf: "flex-start" }}>
-              <Text style={styles.textLink}>Esqueci a senha</Text>
-            </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btnAvancar}>
+            <TouchableOpacity style={styles.btnAvancar} onPress={handleRegister}>
               <Text style={styles.textBtn}>Avançar</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{ marginTop: 8 }} onPress={handleRegister}>
-              <Text style={styles.textLink}>Não possuo login.</Text>
+            <TouchableOpacity style={{ marginTop: 8 }} onPress={handleLogin}>
+              <Text style={styles.textLink}>Já possuo login.</Text>
             </TouchableOpacity>
           </View>
         </View>
