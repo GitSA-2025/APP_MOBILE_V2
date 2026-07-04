@@ -28,7 +28,7 @@ export default function Login() {
     }
 
   const handleHome = () => {
-    navigation.navigate('Home');
+    navigation.replace("App");
   }
 
   return (

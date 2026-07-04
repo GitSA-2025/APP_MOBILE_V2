@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, Button } from 'react-native';
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 // Componente Header customizável
 const Header = ({
@@ -8,8 +9,22 @@ const Header = ({
   showSearch = true,        // Controle para mostrar ou não o input de busca
   showLogo = true,          // Controle para mostrar ou não o logo
 }) => {
+
+  const navigation = useNavigation();
+
   return (
     <View style={[styles.header, { position: 'relative', zIndex: 100 }]}>
+
+      <TouchableOpacity
+        onPress={() => navigation.openDrawer()}
+        style={styles.menuButton}
+      >
+        <Feather
+          name="menu"
+          size={28}
+          color="white"
+        />
+      </TouchableOpacity>
 
       {/* Título do Header */}
       <Text style={styles.headerTitle}>{title}</Text>

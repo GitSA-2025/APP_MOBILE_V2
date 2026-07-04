@@ -18,7 +18,7 @@ const DATA = [
   { id: "3", data: "12-12-2022", nome: "MaryDu", hr_entrada: "12:20:23", hr_saida: "18:20:10", placa: "-" },
 ];
 
-export default function Home() {
+export default function DeliveryRegister() {
 
   const navigation = useNavigation();
 
@@ -47,10 +47,10 @@ export default function Home() {
 
       {/* Cabeçalho 2*/}
       <View style={styles.header}>
-        <Text style={styles.textHeader}>Registros de Entrada</Text>
-        <TouchableOpacity style={styles.btnCriar} onPress={() => {navigation.navigate('CreateEntryRegister')}}>
+        <Text style={styles.textHeader}>Fila de Entregas</Text>
+        <TouchableOpacity style={styles.btnCriar} onPress={() => {navigation.navigate('CreateDeliveryRegister')}}>
           <Feather name="plus" size={20} color="white" />
-          <Text style={styles.textBtn}>Criar registro de entrada</Text>
+          <Text style={styles.textBtn}>Criar registro de entrega</Text>
         </TouchableOpacity>
       </View>
 
@@ -63,7 +63,7 @@ export default function Home() {
               <Text style={[styles.textTabHeader, styles.cellDate]}>Data</Text>
               <Text style={[styles.textTabHeader, styles.cellName]}>Nome</Text>
               <Text style={[styles.textTabHeader, styles.cellTime]}>Hr. Entrada</Text>
-              <Text style={[styles.textTabHeader, styles.cellTime]}>Hr. Saída</Text>
+              <Text style={[styles.textTabHeader, styles.cellTime]}>Fornecedor</Text>
               <Text style={[styles.textTabHeader, styles.cellPlate]}>Placa</Text>
               <Text style={[styles.textTabHeader, styles.cellEdit]}></Text>
             </View>

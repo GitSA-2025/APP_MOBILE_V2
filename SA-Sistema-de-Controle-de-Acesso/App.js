@@ -13,6 +13,9 @@ import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import TwoFA from './src/screens/TwoFA';
 import Home from './src/screens/Home';
+import CreateEntryRegister from './src/screens/CreateEntryRegister';
+import DrawerRoutes from './src/navigation/drawerRoutes';
+import CreateDeliveryRegister from './src/screens/CreateDeliveryRegister';
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -46,7 +49,14 @@ function App() {
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false}}/>
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false}}/>
         <Stack.Screen name="TwoFA" component={TwoFA} options={{ headerShown: false}}/>
-        <Stack.Screen name="Home" component={Home} options={{ headerShown: false}}/>
+        <Stack.Screen
+        name="App"
+        component={DrawerRoutes}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen name="CreateEntryRegister" component={CreateEntryRegister} options={{ headerShown: false}}/>
+      <Stack.Screen name="CreateDeliveryRegister" component={CreateDeliveryRegister} options={{ headerShown: false}}/>
+      {/*<Stack.Screen name="Home" component={Home} options={{ headerShown: false}}/>*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
