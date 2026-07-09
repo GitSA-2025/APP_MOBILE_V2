@@ -7,7 +7,7 @@ import {
   FlatList,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import Header from "../../components/Header";
 import styles from "../../Styles/stylesRegister";
 import { useNavigation } from "@react-navigation/native";
@@ -31,9 +31,8 @@ export default function Home() {
       <Text style={[styles.tableCell, styles.cellPlate]}>{item.placa}</Text>
       
       
-      <TouchableOpacity style={[styles.cellEdit]}>
-        <Feather name="edit-2" size={14} color="white" />
-        <Text style={styles.textEdit}>Editar</Text>
+      <TouchableOpacity style={[styles.cellEdit, styles.btnEdit]}>
+        <MaterialCommunityIcons name="pencil" size={20} color="white" />
       </TouchableOpacity>
     </View>
   );

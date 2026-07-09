@@ -7,6 +7,8 @@ import DeliveryRegister from '../screens/DeliveryRegister';
 
 import CustomDrawer from "../components/CustomDrawer";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import Reports from '../screens/Reports';
+import QRCodeApproval from '../screens/QRCodeApproval';
 
 
 const Drawer = createDrawerNavigator();
@@ -49,6 +51,24 @@ export default function DrawerRoutes() {
                         <MaterialCommunityIcons name="truck-outline" size={size} color={color} />
                     ),
                     drawerLabel: "Fila de Entrega"
+                }} />
+                <Drawer.Screen name="Reports"
+                component={Reports}
+                options={{
+                    headerShown: false,
+                    drawerIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="file-outline" size={size} color={color} />
+                    ),
+                    drawerLabel: "Relatórios"
+                }} />
+                <Drawer.Screen name="QRCodeApproval"
+                component={QRCodeApproval}
+                options={{
+                    headerShown: false,
+                    drawerIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="qrcode" size={size} color={color} />
+                    ),
+                    drawerLabel: "Aprovação de QR Code"
                 }} />
         </Drawer.Navigator>
     )

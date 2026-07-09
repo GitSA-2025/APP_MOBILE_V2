@@ -77,20 +77,23 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   cellPlate: {
-    flex: 1.1, // Espaço para o "-" ou placa menor
+    flex: 1.5, // Espaço para o "-" ou placa menor
     textAlign: "center",
   },
   cellEdit: {
-    flex: 1.5, // Espaço para o botão editar
-    alignItems: "flex-end",
+    flex: 1.1, // Espaço para o botão editar
+    alignItems: "center",
   },
   textEdit: {
-    color: "black",
+    color: "white",
     fontSize: 14,
   },
   btnEdit: {
     backgroundColor: "#8E2927",
-    flexDirection: 'row', 
+    alignItems: 'center',
+    borderRadius: 5,
+    paddingVertical: 5,
+    alignItems: 'center',
   }
 });
 

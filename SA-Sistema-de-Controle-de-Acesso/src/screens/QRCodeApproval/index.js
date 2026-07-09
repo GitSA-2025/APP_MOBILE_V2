@@ -18,21 +18,20 @@ const DATA = [
   { id: "3", data: "12-12-2022", nome: "MaryDu", hr_entrada: "12:20:23", hr_saida: "18:20:10", placa: "-" },
 ];
 
-export default function DeliveryRegister() {
-
-  const navigation = useNavigation();
+export default function QRCodeApproval() {
+   const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
     <View style={styles.rowTab}>
       <Text style={[styles.tableCell, styles.cellDate]}>{item.data}</Text>
       <Text style={[styles.tableCell, styles.cellName]}>{item.nome}</Text>
       <Text style={[styles.tableCell, styles.cellTime]}>{item.hr_entrada}</Text>
-      <Text style={[styles.tableCell, styles.cellTime]}>{item.hr_saida}</Text>
-      <Text style={[styles.tableCell, styles.cellPlate]}>{item.placa}</Text>
       
-      
+      <TouchableOpacity style={[styles.cellEdit, styles.btnEdit, {backgroundColor: 'green', marginRight: 2}]}>
+        <Feather name="check" size={14} color="white" />
+      </TouchableOpacity>
       <TouchableOpacity style={[styles.cellEdit, styles.btnEdit]}>
-        <MaterialCommunityIcons name="pencil" size={20} color="white" />
+        <Feather name="x" size={14} color="white" />
       </TouchableOpacity>
     </View>
   );
@@ -46,10 +45,10 @@ export default function DeliveryRegister() {
 
       {/* Cabeçalho 2*/}
       <View style={styles.header}>
-        <Text style={styles.textHeader}>Fila de Entregas</Text>
+        <Text style={styles.textHeader}>Aprovação de QR Code</Text>
         <TouchableOpacity style={styles.btnCriar} onPress={() => {navigation.navigate('CreateDeliveryRegister')}}>
-          <Feather name="plus" size={20} color="white" />
-          <Text style={styles.textBtn}>Criar registro de entrega</Text>
+          <MaterialCommunityIcons name="qrcode-scan" size={20} color="white" />
+          <Text style={styles.textBtn}>Escanear QR Code</Text>
         </TouchableOpacity>
       </View>
 
@@ -62,8 +61,7 @@ export default function DeliveryRegister() {
               <Text style={[styles.textTabHeader, styles.cellDate]}>Data</Text>
               <Text style={[styles.textTabHeader, styles.cellName]}>Nome</Text>
               <Text style={[styles.textTabHeader, styles.cellTime]}>Hr. Entrada</Text>
-              <Text style={[styles.textTabHeader, styles.cellTime]}>Fornecedor</Text>
-              <Text style={[styles.textTabHeader, styles.cellPlate]}>Placa</Text>
+              <Text style={[styles.textTabHeader, styles.cellEdit]}></Text>
               <Text style={[styles.textTabHeader, styles.cellEdit]}></Text>
             </View>
 
@@ -73,6 +71,7 @@ export default function DeliveryRegister() {
               renderItem={renderItem}
               keyExtractor={(item) => item.id}
               showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
             />
           
       </View>
