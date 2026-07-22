@@ -5,7 +5,13 @@ import {
     DrawerItemList,
 } from "@react-navigation/drawer";
 
-import { View, Text, Image, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+} from "react-native";
 
 export default function CustomDrawer(props) {
     const usuario = {
@@ -14,10 +20,18 @@ export default function CustomDrawer(props) {
         foto: "https://i.pravatar.cc/150?img=32",
     };
 
-    return(
-        <DrawerContentScrollView {...props}>
+    function sair() {
+        console.log("Sair da conta");
+    }
+
+    return (
+        <View style={styles.container}>
+
             <View style={styles.header}>
-                <Image style={styles.avatar} source={{ uri: usuario.foto}}/>
+                <Image
+                    style={styles.avatar}
+                    source={{ uri: usuario.foto }}
+                />
 
                 <Text style={styles.nome}>
                     {usuario.nome}
@@ -28,12 +42,36 @@ export default function CustomDrawer(props) {
                 </Text>
             </View>
 
-            <DrawerItemList {...props}/>
-        </DrawerContentScrollView>
+            <DrawerContentScrollView
+                {...props}
+                contentContainerStyle={styles.drawerContent}
+            >
+
+                <DrawerItemList {...props} />
+            </DrawerContentScrollView>
+
+            <TouchableOpacity
+                style={styles.btnSair}
+                onPress={sair}
+                activeOpacity={0.7}
+            >
+                <Text style={styles.btnSairTexto}>
+                    Sair
+                </Text>
+            </TouchableOpacity>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: 30,
+    },
+
+    drawerContent: {
+        paddingTop: 0,
+    },
 
     header: {
         padding: 20,
@@ -53,11 +91,27 @@ const styles = StyleSheet.create({
     nome: {
         fontSize: 18,
         fontWeight: "bold",
+        color: "#fff",
     },
 
     email: {
-        color: "#666",
+        color: "#d1d1d1",
         marginTop: 5,
     },
 
+    btnSair: {
+        alignSelf: "flex-end",
+        backgroundColor: "#8E2927",
+        paddingHorizontal: 25,
+        paddingVertical: 12,
+        borderRadius: 8,
+        marginRight: 20,
+        marginBottom: 20,
+    },
+
+    btnSairTexto: {
+        color: "#fff",
+        fontSize: 16,
+        fontWeight: "bold",
+    },
 });

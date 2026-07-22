@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
     fontSize: 13,
     color: "#27445B",
+    textAlign: 'center'
   },
   rowTab: {
     flexDirection: "row",
@@ -68,9 +69,11 @@ const styles = StyleSheet.create({
   },
   cellDate: {
     flex: 2.2, // Espaço para "12-12-2022"
+    textAlign: 'center'
   },
   cellName: {
     flex: 1.6, // Espaço para o Nome
+    textAlign: 'center'
   },
   cellTime: {
     flex: 1.8, // Espaço para "12:20:23"

@@ -6,9 +6,10 @@ import Home from "../screens/Home";
 import DeliveryRegister from '../screens/DeliveryRegister';
 
 import CustomDrawer from "../components/CustomDrawer";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import Reports from '../screens/Reports';
 import QRCodeApproval from '../screens/QRCodeApproval';
+import EditAccount from '../screens/EditAccount';
 
 
 const Drawer = createDrawerNavigator();
@@ -69,6 +70,15 @@ export default function DrawerRoutes() {
                         <MaterialCommunityIcons name="qrcode" size={size} color={color} />
                     ),
                     drawerLabel: "Aprovação de QR Code"
+                }} />
+                <Drawer.Screen name="EditAccount"
+                component={EditAccount}
+                options={{
+                    headerShown: false,
+                    drawerIcon: ({ color, size }) => (
+                        <FontAwesome5 name="user-edit" size={size} color={color} />
+                    ),
+                    drawerLabel: "Editar Conta"
                 }} />
         </Drawer.Navigator>
     )
