@@ -37,7 +37,7 @@ export default function CreateDeliveryRegister() {
                             {/* Cabeçalho */}
                             <View style={styles.header}>
                                 <TouchableOpacity onPress={() => {
-                                    navigation.navigate("App", {
+                                    navigation.replace("App", {
                                         screen: "DeliveryRegister"
                                     })
                                 }}>

@@ -13,7 +13,12 @@ import {
     TouchableOpacity,
 } from "react-native";
 
+import { useNavigation } from '@react-navigation/native';
+
 export default function CustomDrawer(props) {
+
+    const navigation = useNavigation();
+
     const usuario = {
         nome: "Maria",
         email: "maria@gmail.com",
@@ -21,7 +26,7 @@ export default function CustomDrawer(props) {
     };
 
     function sair() {
-        console.log("Sair da conta");
+        navigation.replace("Login");
     }
 
     return (

@@ -47,7 +47,7 @@ export default function Home() {
       {/* Cabeçalho 2*/}
       <View style={styles.header}>
         <Text style={styles.textHeader}>Registros de Entrada</Text>
-        <TouchableOpacity style={styles.btnCriar} onPress={() => {navigation.navigate('CreateEntryRegister')}}>
+        <TouchableOpacity style={styles.btnCriar} onPress={() => {navigation.replace('CreateEntryRegister')}}>
           <Feather name="plus" size={20} color="white" />
           <Text style={styles.textBtn}>Criar registro de entrada</Text>
         </TouchableOpacity>

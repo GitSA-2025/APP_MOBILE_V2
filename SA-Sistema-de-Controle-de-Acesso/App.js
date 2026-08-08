@@ -16,6 +16,7 @@ import Home from './src/screens/Home';
 import CreateEntryRegister from './src/screens/CreateEntryRegister';
 import DrawerRoutes from './src/navigation/drawerRoutes';
 import CreateDeliveryRegister from './src/screens/CreateDeliveryRegister';
+import GraphicReport from './src/screens/GraphicReport';
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -57,6 +58,7 @@ function App() {
       <Stack.Screen name="CreateEntryRegister" component={CreateEntryRegister} options={{ headerShown: false}}/>
       <Stack.Screen name="CreateDeliveryRegister" component={CreateDeliveryRegister} options={{ headerShown: false}}/>
       {/*<Stack.Screen name="Home" component={Home} options={{ headerShown: false}}/>*/}
+      <Stack.Screen name="GraphicReport" component={GraphicReport} options={{ headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

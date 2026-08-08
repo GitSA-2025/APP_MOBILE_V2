@@ -5,7 +5,16 @@ import Header from '../../components/Header'
 import styles from "../../Styles/stylesRegister";
 import { Octicons } from '@expo/vector-icons';
 
+import { useNavigation } from '@react-navigation/native';
+
 export default function Reports() {
+
+  const navigation = useNavigation();
+
+  const handleGraphicReport = () => {
+        // Navega para a tela de relatório de fluxo de pessoas em gráfico
+        navigation.replace('GraphicReport');
+    }
 
   return (
     <View>
@@ -20,7 +29,7 @@ export default function Reports() {
       </View>
 
       <View style={{padding: 20}}>
-        <TouchableOpacity style={[styles.btnCriar, {marginBottom: 12}]}>
+        <TouchableOpacity style={[styles.btnCriar, {marginBottom: 12}]} onPress={handleGraphicReport}>
             <Octicons name="graph" size={24} color="white" />
             <Text style={[styles.textBtn, {fontSize: 18, paddingLeft: 10}]}>
                 Gráfico de tipo de pessoas

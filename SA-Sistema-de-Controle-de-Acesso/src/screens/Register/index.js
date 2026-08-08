@@ -30,7 +30,7 @@ export default function Register() {
 
   const handleRegister = () => {
     // Navega para a tela de 2 fatores
-    navigation.navigate("TwoFA");
+    navigation.replace("TwoFA");
   };
 
   return (

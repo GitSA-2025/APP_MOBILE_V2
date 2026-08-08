@@ -47,7 +47,7 @@ export default function DeliveryRegister() {
       {/* Cabeçalho 2*/}
       <View style={styles.header}>
         <Text style={styles.textHeader}>Fila de Entregas</Text>
-        <TouchableOpacity style={styles.btnCriar} onPress={() => {navigation.navigate('CreateDeliveryRegister')}}>
+        <TouchableOpacity style={styles.btnCriar} onPress={() => {navigation.replace('CreateDeliveryRegister')}}>
           <Feather name="plus" size={20} color="white" />
           <Text style={styles.textBtn}>Criar registro de entrega</Text>
         </TouchableOpacity>
