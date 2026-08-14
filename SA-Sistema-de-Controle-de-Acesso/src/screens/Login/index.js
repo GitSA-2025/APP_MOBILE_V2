@@ -15,6 +15,10 @@ import styles from "../../Styles/stylesLogin";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
+import Animated from 'react-native-reanimated';
+import { SlideInLeft, withTiming, Easing, ZoomIn } from "react-native-reanimated";
+
+
 export default function Login() {
 
   const navigation = useNavigation();
@@ -37,20 +41,21 @@ export default function Login() {
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <View style={styles.container}>
+        <View style={styles.container} >
           <StatusBar style="light" />
-          <View style={styles.popup}>
-            <Image
+          <Animated.View style={styles.popup} /*entering={SlideInLeft.duration(800)}*/>
+            <Animated.Image
               source={require("../../../assets/Logo_Kozzy.png")}
               style={styles.logo}
+              entering={ZoomIn.delay(400).duration(800)}
             />
 
-            <Text style={styles.h1}>Olá, seja bem vindo(a) novamente!</Text>
-            <Text style={styles.h4}>
+            <Animated.Text style={styles.h1} entering={ZoomIn.delay(500).duration(800)}>Olá, seja bem vindo(a) novamente!</Animated.Text>
+            <Animated.Text style={styles.h4} entering={ZoomIn.delay(550).duration(800)}>
               Conecte-se à sua conta para continuar e utilizar as
               funcionalidades do APP!
-            </Text>
-            <View style={{ width: "100%", marginTop: 12 }}>
+            </Animated.Text>
+            <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(650).duration(800)}>
               <AnimatedInput
                 label="Email"
                 iconName="email"
@@ -65,9 +70,9 @@ export default function Login() {
                 onChangeText={setSenha}
                 secureTextEntry
               />
-            </View>
+            </Animated.View>
             <TouchableOpacity style={{ alignSelf: "flex-start" }}>
-              <Text style={styles.textLink}>Esqueci a senha</Text>
+              <Animated.Text style={styles.textLink}>Esqueci a senha</Animated.Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.btnAvancar} onPress={handleHome}>
@@ -77,7 +82,7 @@ export default function Login() {
             <TouchableOpacity style={{ marginTop: 8 }} onPress={handleRegister}>
               <Text style={styles.textLink}>Não possuo login.</Text>
             </TouchableOpacity>
-          </View>
+          </Animated.View>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
