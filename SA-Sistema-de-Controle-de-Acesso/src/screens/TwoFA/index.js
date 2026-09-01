@@ -11,19 +11,22 @@ import {
   Image
 } from "react-native";
 import styles from "../../Styles/stylesLogin";
-import AnimatedInput from "../../components/AnimatedInput"; // Input customizado com animação
+import AnimatedInput from "../../components/AnimatedInput"; 
 import { useState } from "react";
-import { useRoute, useNavigation } from "@react-navigation/native"; // Para pegar params e navegação
+import { useRoute, useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+
+import Animated from 'react-native-reanimated';
+import { SlideInLeft, withTiming, Easing, ZoomIn } from "react-native-reanimated";
 
 export default function TwoFA() {
 
-    const navigation = useNavigation();
-    const route = useRoute();
+  const navigation = useNavigation();
+  const route = useRoute();
 
-    const [codigo, setCodigo] = useState("");
+  const [codigo, setCodigo] = useState("");
 
-    
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
@@ -32,31 +35,35 @@ export default function TwoFA() {
       >
         <View style={styles.container}>
           <StatusBar style="light" />
-          <View style={styles.popup}>
-            <Image
+          <Animated.View style={styles.popup} entering={ZoomIn.duration(800)}>
+            <Animated.Image
               source={require("../../../assets/Logo_Kozzy.png")}
               style={styles.logo}
+              entering={ZoomIn.delay(300).duration(800)}
             />
 
-            <Text style={styles.h1}>Verificação de Duas Etapas</Text>
-            <Text style={styles.h4}>
+            <Animated.Text style={styles.h1} entering={ZoomIn.delay(300).duration(800)}>Verificação de Duas Etapas</Animated.Text>
+            <Animated.Text style={styles.h4} entering={ZoomIn.delay(350).duration(800)}>
               Por favor, verifique a caixa de entrda do seu email ou o SPAM, e digite o código enviado no campo abaixo.
-            </Text>
-            <View style={{ width: "100%", marginTop: 12 }}>
+            </Animated.Text>
+            <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(450).duration(800)}>
               <AnimatedInput
-              label="Código"
-              iconName="numeric"
-              value={codigo}
-              onChangeText={setCodigo}
-              maxLength={6} // Código de 6 dígitos
-              keyboardType="number-pad"
-            />
-            </View>
+                label="Código"
+                iconName="numeric"
+                value={codigo}
+                onChangeText={setCodigo}
+                maxLength={6}
+                keyboardType="number-pad"
+              />
+            </Animated.View>
 
-            <TouchableOpacity style={styles.btnAvancar}>
-              <Text style={styles.textBtn}>Avançar</Text>
-            </TouchableOpacity>
-          </View>
+            <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(500).duration(800)}>
+              <TouchableOpacity style={styles.btnAvancar}>
+                <Text style={styles.textBtn}>Avançar</Text>
+              </TouchableOpacity>
+            </Animated.View>
+
+          </Animated.View>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>

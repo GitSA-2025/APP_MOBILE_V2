@@ -15,6 +15,9 @@ import styles from "../../Styles/stylesLogin";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
+import Animated from 'react-native-reanimated';
+import { SlideInLeft, withTiming, Easing, ZoomIn } from "react-native-reanimated";
+
 export default function Register() {
   const navigation = useNavigation();
 
@@ -41,18 +44,19 @@ export default function Register() {
       >
         <View style={styles.container}>
           <StatusBar style="light" />
-          <View style={styles.popup}>
-            <Image
+          <Animated.View style={styles.popup} entering={ZoomIn.duration(800)}>
+            <Animated.Image
               source={require("../../../assets/Logo_Kozzy.png")}
               style={styles.logo}
+              entering={ZoomIn.delay(300).duration(800)}
             />
 
-            <Text style={styles.h1}>Olá, seja bem vindo(a) novo usuário!</Text>
-            <Text style={styles.h4}>
+            <Animated.Text style={styles.h1} entering={ZoomIn.delay(300).duration(800)}>Olá, seja bem vindo(a) novo usuário!</Animated.Text>
+            <Animated.Text style={styles.h4} entering={ZoomIn.delay(350).duration(800)}>
               Crie a sua nova conta no SA para continuar e utlizar as
               funcionalidades do APP!
-            </Text>
-            <View style={{ width: "100%", marginTop: 12 }}>
+            </Animated.Text>
+            <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(450).duration(800)}>
               <AnimatedInput
                 label="Nome"
                 iconName="account"
@@ -80,16 +84,19 @@ export default function Register() {
                 onChangeText={setConfSenha}
                 secureTextEntry
               />
-            </View>
+            </Animated.View>
 
-            <TouchableOpacity style={styles.btnAvancar} onPress={handleRegister}>
-              <Text style={styles.textBtn}>Avançar</Text>
-            </TouchableOpacity>
+            <Animated.View entering={ZoomIn.delay(550).duration(800)} style={{ width: "100%", marginTop: 12 }}>
+              <TouchableOpacity style={styles.btnAvancar} onPress={handleRegister}>
+                <Text style={styles.textBtn}>Avançar</Text>
+              </TouchableOpacity>
+            </Animated.View>
+
 
             <TouchableOpacity style={{ marginTop: 8 }} onPress={handleLogin}>
-              <Text style={styles.textLink}>Já possuo login.</Text>
+              <Animated.Text style={styles.textLink} entering={ZoomIn.delay(550).duration(800)}>Já possuo login.</Animated.Text>
             </TouchableOpacity>
-          </View>
+          </Animated.View>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>

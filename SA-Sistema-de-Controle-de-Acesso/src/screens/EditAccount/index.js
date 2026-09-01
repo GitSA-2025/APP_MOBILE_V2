@@ -21,6 +21,7 @@ import styles from "../../Styles/stylesForm";
 import stylesModal from "../../Styles/stylesModal";
 
 import { useNavigation } from "@react-navigation/native";
+import Animated, { ZoomIn, withTiming, Easing } from 'react-native-reanimated';
 
 export default function EditAccount() {
   const navigation = useNavigation();
@@ -51,9 +52,9 @@ export default function EditAccount() {
               showsVerticalScrollIndicator={false}
               contentContainerStyle={styles.scroll}
             >
-              <View style={styles.popup}>
+              <Animated.View style={styles.popup} entering={ZoomIn.duration(800)}>
 
-                <View style={styles.header}>
+                <Animated.View style={styles.header} entering={ZoomIn.delay(200).duration(800)}>
                   <TouchableOpacity
                     onPress={() => {
                       navigation.replace("App", {
@@ -69,44 +70,54 @@ export default function EditAccount() {
                   </TouchableOpacity>
 
                   <Text style={styles.h1}>Editar Conta</Text>
-                </View>
+                </Animated.View>
 
-                <View style={{ margin: 24 }}>
+                <Animated.View style={{ margin: 24 }} entering={ZoomIn.delay(250).duration(800)}>
                   <PhotoPickerAccount onChange={setFoto} />
-                </View>
+                </Animated.View>
 
-                <AnimatedInput
-                  label="Nome"
-                  iconName="account"
-                  value={nome}
-                  onChangeText={setNome}
-                />
+                <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(250).duration(800)}>
+                  <AnimatedInput
+                    label="Nome"
+                    iconName="account"
+                    value={nome}
+                    onChangeText={setNome}
+                  />
 
-                <AnimatedInput
-                  label="Email"
-                  iconName="email"
-                  value={email}
-                  onChangeText={setEmail}
-                  keyboardType="email-address"
-                />
+                  <AnimatedInput
+                    label="Email"
+                    iconName="email"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                  />
+                </Animated.View>
 
-                <TouchableOpacity
-                  style={stylesModal.openButton}
-                  onPress={() => setModalOpen(true)}
-                >
-                  <Text style={stylesModal.openButtonText}>
-                    Alterar senha
-                  </Text>
-                </TouchableOpacity>
+                <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(300).duration(800)}>
+                  <TouchableOpacity style={styles.btnSalvar}>
+                    <Text style={styles.textBtn}> Salvar </Text>
+                  </TouchableOpacity>
+                </Animated.View>
 
-              </View>
+                <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(350).duration(800)}>
+                  <TouchableOpacity
+                    style={stylesModal.openButton}
+                    onPress={() => setModalOpen(true)}
+                  >
+                    <Text style={stylesModal.openButtonText}>
+                      Alterar senha
+                    </Text>
+                  </TouchableOpacity>
+                </Animated.View>
+
+              </Animated.View>
             </ScrollView>
           </View>
         </KeyboardAvoidingView>
       </TouchableWithoutFeedback>
 
       {modalOpen && (
-        <View style={stylesModal.overlay}>
+        <Animated.View style={stylesModal.overlay} entering={ZoomIn.duration(800)}>
 
           {/* Área escura que fecha o modal */}
           <TouchableWithoutFeedback
@@ -124,9 +135,9 @@ export default function EditAccount() {
             behavior={Platform.OS === "ios" ? "padding" : undefined}
           >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <View style={stylesModal.modalBox}>
+              <Animated.View style={stylesModal.modalBox} entering={ZoomIn.duration(800)}>
 
-                <View style={stylesModal.modalHeader}>
+                <Animated.View style={stylesModal.modalHeader} entering={ZoomIn.delay(200).duration(800)}>
                   <Text style={stylesModal.modalTitle}>
                     Alterar senha
                   </Text>
@@ -141,13 +152,13 @@ export default function EditAccount() {
                       color="#333"
                     />
                   </TouchableOpacity>
-                </View>
+                </Animated.View>
 
-                <Text style={stylesModal.description}>
+                <Animated.Text style={stylesModal.description} entering={ZoomIn.delay(250).duration(800)}>
                   Insira o e-mail da conta para efetuar a alteração da senha.
-                </Text>
+                </Animated.Text>
 
-                <View style={stylesModal.inputContainer}>
+                <Animated.View style={stylesModal.inputContainer} entering={ZoomIn.delay(300).duration(800)}>
                   <AnimatedInput
                     label="Email"
                     iconName="email"
@@ -156,9 +167,9 @@ export default function EditAccount() {
                     keyboardType="email-address"
                     autoCapitalize="none"
                   />
-                </View>
+                </Animated.View>
 
-                <View style={stylesModal.buttons}>
+                <Animated.View style={stylesModal.buttons} entering={ZoomIn.delay(350).duration(800)}>
                   <TouchableOpacity
                     style={stylesModal.cancelButton}
                     onPress={() => setModalOpen(false)}
@@ -179,13 +190,13 @@ export default function EditAccount() {
                       Confirmar
                     </Text>
                   </TouchableOpacity>
-                </View>
+                </Animated.View>
 
-              </View>
+              </Animated.View>
             </TouchableWithoutFeedback>
           </KeyboardAvoidingView>
 
-        </View>
+        </Animated.View>
       )}
 
     </View>

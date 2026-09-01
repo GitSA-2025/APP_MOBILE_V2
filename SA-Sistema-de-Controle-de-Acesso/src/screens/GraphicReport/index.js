@@ -6,6 +6,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
 
+import Animated, { ZoomIn, Easing, withTiming } from 'react-native-reanimated';
+
 export default function GraphicReport() {
 
   const navigation = useNavigation();
@@ -17,8 +19,8 @@ export default function GraphicReport() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}>
         <View style={styles.container}>
           <StatusBar style='inverted' />
-          <View style={styles.popup}>
-            <View style={styles.header}>
+          <Animated.View style={styles.popup} entering={ZoomIn.duration(800)}>
+            <Animated.View style={styles.header} entering={ZoomIn.delay(200).duration(800)}>
               <TouchableOpacity onPress={() => {
                 navigation.replace("App", {
                   screen: "Reports"
@@ -27,11 +29,11 @@ export default function GraphicReport() {
                 <Ionicons name="arrow-back-outline" size={24} color="black" />
               </TouchableOpacity>
               <Text style={styles.h1}>Gráfico de Fluxo de Pessoas</Text>
-            </View>
-            <Text style={styles.h4}>Insira as datas de um determinado periodo para fazer a geração do gráfico do fluxo de pessoas que acessaram a empresa.</Text>
+            </Animated.View>
+            <Animated.Text style={styles.h4} entering={ZoomIn.delay(250).duration(800)}>Insira as datas de um determinado periodo para fazer a geração do gráfico do fluxo de pessoas que acessaram a empresa.</Animated.Text>
 
 
-            <View style={styles.formRow}>
+            <Animated.View style={styles.formRow} entering={ZoomIn.delay(300).duration(800)}>
               <View style={styles.dateGroup}>
                 <Text style={styles.label}>Data Inicial:</Text>
                 <TextInput style={styles.tbx} placeholder="dd/mm/aaaa" />
@@ -40,11 +42,13 @@ export default function GraphicReport() {
                 <Text style={styles.label}>Data Final:</Text>
                 <TextInput style={styles.tbx} placeholder="dd/mm/aaaa" />
               </View>
-            </View>
+            </Animated.View>
 
-            <TouchableOpacity style={styles.btnSalvar}>
-              <Text style={styles.textBtn}>Gerar Gráfico</Text>
-            </TouchableOpacity>
+            <Animated.View style={{ width: "100%", marginTop: 12 }} entering={ZoomIn.delay(350).duration(800)}>
+              <TouchableOpacity style={styles.btnSalvar}>
+                <Text style={styles.textBtn}>Gerar Gráfico</Text>
+              </TouchableOpacity>
+            </Animated.View>
 
             {/* 
           loading ? (
@@ -112,7 +116,7 @@ export default function GraphicReport() {
                     </View>
                 )
                  */}
-          </View>
+          </Animated.View>
         </View>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
