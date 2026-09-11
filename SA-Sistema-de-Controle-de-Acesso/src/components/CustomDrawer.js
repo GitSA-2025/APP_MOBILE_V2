@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 
 import {
     DrawerContentScrollView,
@@ -21,9 +21,11 @@ export default function CustomDrawer(props) {
 
     const navigation = useNavigation();
 
-    const route = useRoute();
+    const [userEmail, setUserEmail] = useState();
 
-    const { user_email } = route.params;
+    useEffect(() => {
+        AsyncStorage.getItem('userEmail').then(setUserEmail);
+    }, []);
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
@@ -31,7 +33,7 @@ export default function CustomDrawer(props) {
 
     async function fetchConta(email) {
         try {
-            const res = await api.post('/api/mobile/app/conta', { user_email: email });
+            const res = await api.post('/api/mobile/app/conta', { user_email: userEmail });
             const usuario = res.data;
 
             setDados(usuario);
@@ -45,10 +47,10 @@ export default function CustomDrawer(props) {
 
     useFocusEffect(
         useCallback(() => {
-            if (user_email) {
-                fetchConta(user_email);
+            if (userEmail) {
+                fetchConta(userEmail);
             }
-        }, [user_email])
+        }, [userEmail])
     );
 
     const usuario = {

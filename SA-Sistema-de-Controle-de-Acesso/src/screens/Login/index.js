@@ -43,7 +43,9 @@ export default function Login() {
 
       await AsyncStorage.setItem('userToken', token);
 
-      return token;
+      await AsyncStorage.setItem('userEmail', email);
+
+      return token, email;
     } catch (err) {
       console.log('Erro ao fazer o login:', err.response?.data || err.message);
       throw err;
