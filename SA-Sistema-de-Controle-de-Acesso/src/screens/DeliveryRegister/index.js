@@ -99,7 +99,10 @@ export default function DeliveryRegister() {
               <Text style={[styles.tableCell, styles.cellPlate]}>{item.plate_vehicle || 'Ñ se aplica'}</Text>
 
 
-              <TouchableOpacity style={[styles.cellEdit, styles.btnEdit]}>
+              <TouchableOpacity
+                style={[styles.cellEdit, styles.btnEdit]}
+                onPress={() => navigation.navigate('EditDeliveryRegister', { entry: item })}
+              >
                 <MaterialCommunityIcons name="pencil" size={20} color="white" />
               </TouchableOpacity>
             </Animated.View>

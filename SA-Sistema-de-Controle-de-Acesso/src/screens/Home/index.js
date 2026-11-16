@@ -146,7 +146,10 @@ export default function Home() {
               <Text style={[styles.tableCell, styles.cellPlate]}>{item.car_plate || 'Ñ se aplica'}</Text>
 
 
-              <TouchableOpacity style={[styles.cellEdit, styles.btnEdit]}>
+              <TouchableOpacity
+                style={[styles.cellEdit, styles.btnEdit]}
+                onPress={() => navigation.navigate('EditEntryRegister', { entry: item })}
+              >
                 <MaterialCommunityIcons name="pencil" size={20} color="white" />
               </TouchableOpacity>
             </Animated.View>

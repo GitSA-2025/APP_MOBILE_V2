@@ -17,6 +17,9 @@ import CreateEntryRegister from './src/screens/CreateEntryRegister';
 import DrawerRoutes from './src/navigation/drawerRoutes';
 import CreateDeliveryRegister from './src/screens/CreateDeliveryRegister';
 import GraphicReport from './src/screens/GraphicReport';
+import QRCodeScan from './src/screens/QRCodeScan';
+import EditEntryRegister from './src/screens/EditEntryRegister';
+import EditDeliveryRegister from './src/screens/EditDeliveryRegister';
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator();
@@ -59,6 +62,9 @@ function App() {
       <Stack.Screen name="CreateDeliveryRegister" component={CreateDeliveryRegister} options={{ headerShown: false}}/>
       {/*<Stack.Screen name="Home" component={Home} options={{ headerShown: false}}/>*/}
       <Stack.Screen name="GraphicReport" component={GraphicReport} options={{ headerShown: false}}/>
+      <Stack.Screen name="QRCodeScan" component={QRCodeScan} options={{ headerShown: false}}/>
+      <Stack.Screen name="EditEntryRegister" component={EditEntryRegister} options={{ headerShown: false}}/>
+      <Stack.Screen name="EditDeliveryRegister" component={EditDeliveryRegister} options={{ headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

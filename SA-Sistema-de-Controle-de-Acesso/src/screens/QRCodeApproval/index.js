@@ -56,7 +56,7 @@ export default function QRCodeApproval() {
       {/* Cabeçalho 2*/}
       <Animated.View style={styles.header} key={focusKey} entering={FadeInDown.duration(250).damping(18)}>
         <Text style={styles.textHeader}>Aprovação de QR Code</Text>
-        <TouchableOpacity style={styles.btnCriar} onPress={() => { navigation.navigate('CreateDeliveryRegister') }}>
+        <TouchableOpacity style={styles.btnCriar} onPress={() => { navigation.navigate('QRCodeScan') }}>
           <MaterialCommunityIcons name="qrcode-scan" size={20} color="white" />
           <Text style={styles.textBtn}>Escanear QR Code</Text>
         </TouchableOpacity>
